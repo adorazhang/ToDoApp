@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app="toDoApp">
+<head>
+    <title>To Do App By Adora</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <!-- Content Begin -->
+    <div ng-controller="controller as todoList">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>
+                    <i class="fa fa-list"></i><b> TO-DO LIST </b>
+                    <small><i class="fa fa-check-square-o"></i> {{todoList.countDone()}}/{{todoList.todos.length}} DONE!</small>
+                </h4>
+            </div>
+            <div class="panel-body">
+                <!-- List Begin -->
+                <div class="form-group">
+                    <div>
+                        <form ng-submit="todoList.addTodo()">
+                            <input required type="text" ng-model="todoList.todoText" size="30" placeholder="Add new">
+                            <button class="btn btn-default btn-xs" type="submit"><i class="fa fa-plus"></i></button>
+                        </form>
+                    </div>
+                    <div ng-repeat="todo in todoList.todos">
+                        <input type="checkbox" ng-model="todo.done">
+                        <span ng-if="!todo.editing" class="done-{{todo.done}}">{{todo.text}}</span>
+                        <span ng-if="todo.done" class="btn btn-link btn-xs delete" ng-click="todoList.deleteTodo($index)"><i class="fa fa-trash-o"></i></span>
+                        <span ng-if="!todo.done && !todo.editing" class="btn btn-link btn-xs edit" ng-click="todo.editing = true;"><i class="fa fa-edit"></i></span>
+                        <input ng-if="todo.editing" ng-model="todo.text" required type="text" size="30" />
+                        <span ng-if="todo.editing" class="btn btn-link btn-xs edit" ng-click="todo.editing = false;"><i class="fa fa-check"></i></span>
+                    </div>
+                </div>
+                <a class="dimmed" href="" ng-click="todoList.clearAll()"><i class="fa fa-trash"></i> Clear All Done</a>
+                <!-- List End -->
+            </div>
+        </div>
+
+    </div>
+    <!-- Content End -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>
