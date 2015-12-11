@@ -34,9 +34,6 @@
             return count;
         };
 
-        todoList.doneEditing = function () {
-        };
-
         todoList.clearAll = function () {
             var oldTodos = todoList.todos;
             todoList.todos = [];
