@@ -1,12 +1,6 @@
 # To-Do List Mobile Web App in JavaScript (AngularJS) #
 > By Qiao "Adora" Zhang (adora91@gmail.com)
 
-Option Chosen
-----
-Option #2: Create a mobile web app that allows you create, edit, and view short notes. Notes are just small textual items, like to-do lists.
-- Notes are stored using browser local storage
-- The app should be usable on a standard mobile browser
-
 Overview
 ----
 This is a simple to-do app in AngularJS and BootStrap.
